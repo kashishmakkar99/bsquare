@@ -5,33 +5,6 @@ import { toast } from 'sonner';
 import { Mail, MessageSquare, Phone } from 'lucide-react';
 import { supabase } from '../lib/supabase'; // adjust path as needed
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-
-  const { data, error } = await supabase.from('contact_messages').insert([formData]);
-
-  
-  
-  if (error) {
-    toast.error('Something went wrong', {
-      description: error.message,
-    });
-  } else {
-    toast.success('Your message has been sent!', {
-      description: "We'll get back to you within 24 hours.",
-    });
-    setFormData({
-      name: '',
-      email: '',
-      company: '',
-      website: '',
-      message: '',
-    });
-  }
-
-  setIsSubmitting(false);
-};
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -52,6 +25,34 @@ const ContactPage = () => {
     }));
   };
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+  
+    const { data, error } = await supabase.from('contact_messages').insert([formData]);
+  
+    
+    
+    if (error) {
+      toast.error('Something went wrong', {
+        description: error.message,
+      });
+    } else {
+      toast.success('Your message has been sent!', {
+        description: "We'll get back to you within 24 hours.",
+      });
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        website: '',
+        message: '',
+      });
+    }
+  
+    setIsSubmitting(false);
+  };
+  
 
 
   return (
