@@ -10,7 +10,6 @@ const ContactPage = () => {
     email: '',
     company: '',
     website: '',
-    budget: '',
     message: '',
   });
   
@@ -39,7 +38,6 @@ const ContactPage = () => {
         email: '',
         company: '',
         website: '',
-        budget: '',
         message: '',
       });
     }, 1500);
@@ -177,24 +175,7 @@ const ContactPage = () => {
                     </div>
                   </div>
                   
-                  <div>
-                    <label htmlFor="budget" className="block mb-2 font-medium">
-                      Monthly Marketing Budget
-                    </label>
-                    <select
-                      id="budget"
-                      name="budget"
-                      value={formData.budget}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2 border border-neutral-300 rounded-md focus:outline-none focus:ring-2 focus:ring-coral-500"
-                    >
-                      <option value="">Select a range</option>
-                      <option value="under-5k">Under $5,000/month</option>
-                      <option value="5k-15k">$5,000 - $15,000/month</option>
-                      <option value="15k-30k">$15,000 - $30,000/month</option>
-                      <option value="over-30k">Over $30,000/month</option>
-                    </select>
-                  </div>
+  
                   
                   <div>
                     <label htmlFor="message" className="block mb-2 font-medium">
