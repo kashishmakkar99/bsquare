@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 import { Mail, MessageSquare, Phone } from 'lucide-react';
-import { supabase } from './lib/supabase'; // adjust path as needed
+import { supabase } from '../lib/supabase'; // adjust path as needed
 
 const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
@@ -11,6 +11,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
   const { data, error } = await supabase.from('contact_messages').insert([formData]);
 
+  
+  
   if (error) {
     toast.error('Something went wrong', {
       description: error.message,
